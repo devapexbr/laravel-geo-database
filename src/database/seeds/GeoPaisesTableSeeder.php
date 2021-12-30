@@ -17,7 +17,7 @@ class GeoPaisesTableSeeder extends Seeder
 
         DB::table('geo_paises')->delete();
 
-        DB::unprepared(<<<mysql
+        /*DB::unprepared(<<<mysql
 INSERT INTO `geo_paises` (`id`, `nome_en`, `nome`, `sigla`, `bacen`) VALUES
 (1, 'Brazil', 'Brasil', 'BR', 1058),
 (2, 'Afghanistan', 'Afeganistão', 'AF', 132),
@@ -273,16 +273,18 @@ INSERT INTO `geo_paises` (`id`, `nome_en`, `nome`, `sigla`, `bacen`) VALUES
 (261, 'Saint-Barthélemy', 'São Bartolomeu', 'FR', 6939),
 (262, 'Saint Martin', 'São Martinho, Ilha de (Parte Francesa)', 'SM', 6980),
 (263, 'Terres Australes et Antarctiques Françaises', 'Terras Austrais e Antárcticas Francesas', 'TF', 7811);
-mysql);
+mysql);*/
 
-        /*\DB::table('geo_paises')->insert(array (
+        DB::table('geo_paises')->insert(array (
             0 =>
                 array (
                     'id' => '1',
                     'nome' => 'Brasil',
+                    'nome_en' => 'Brazil',
                     'sigla' => 'BR',
+                    'bacen' => 1058
                 ),
-        ));*/
+        ));
 
     }
 }

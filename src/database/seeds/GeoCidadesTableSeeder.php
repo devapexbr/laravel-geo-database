@@ -5619,7 +5619,7 @@ INSERT INTO `geo_cidades` (`id`, `nome`, `estado_id`, `ibge`) VALUES
 (5610, 'Exterior', 99, 9999999);
 mylsq);
 
-        /*\DB::table('geo_cidades')->insert(array (
+        /*DB::table('geo_cidades')->insert(array (
             0 =>
             array (
                 'id' => '1',
@@ -8620,6 +8620,12 @@ mylsq);
                 'nome' => 'Jussara',
                 'estado_id' => '5',
             ),
+            499 =>
+                array (
+                    'id' => '500',
+                    'nome' => 'Jussara',
+                    'estado_id' => '5',
+                ),
         ));*/
     }
 }

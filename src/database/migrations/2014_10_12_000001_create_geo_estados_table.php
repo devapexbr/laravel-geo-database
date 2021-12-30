@@ -16,12 +16,12 @@ class CreateGeoEstadosTable extends Migration
         Schema::create('geo_estados', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('nome');
-            $table->string('uf', 3);
-            $table->integer('ibge');
-            $table->string('ddd', 3);
+            $table->string('nome')->nullable();
+            $table->string('uf', 3)->nullable();
+            $table->integer('ibge')->nullable();
+            $table->string('ddd', 3)->nullable();
 
-            $table->integer('pais_id')->unsigned();
+            $table->integer('pais_id')->unsigned()->nullable();
             $table->foreign('pais_id')->references('id')->on('paises');
         });
     }

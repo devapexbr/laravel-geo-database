@@ -16,10 +16,10 @@ class CreateGeoCidadesTable extends Migration
         Schema::create('geo_cidades', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('nome');
-            $table->integer('ibge');
+            $table->string('nome')->nullable();
+            $table->integer('ibge')->nullable();
 
-            $table->integer('estado_id')->unsigned();
+            $table->integer('estado_id')->unsigned()->nullable();
             $table->foreign('estado_id')->references('id')->on('estados');
         });
     }

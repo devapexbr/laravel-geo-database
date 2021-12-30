@@ -15,10 +15,10 @@ class CreateGeoPaisesTable extends Migration
     {
         Schema::create('geo_paises', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->string('nome_en');
-            $table->string('sigla', 3);
-            $table->integer('bacen');
+            $table->string('nome')->nullable();
+            $table->string('nome_en')->nullable();
+            $table->string('sigla', 3)->nullable();
+            $table->integer('bacen')->nullable();
         });
     }
 

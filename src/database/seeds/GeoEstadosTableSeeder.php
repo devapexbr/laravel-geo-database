@@ -18,7 +18,7 @@ class GeoEstadosTableSeeder extends Seeder
 
         DB::table('geo_estados')->delete();
 
-        DB::unprepared(<<<mysql
+       /* DB::unprepared(<<<mysql
 INSERT INTO `geo_estados` (`id`, `nome`, `uf`, `ibge`, `pais_id`, `ddd`) VALUES
 (1, 'Acre', 'AC', 12, 1, '68'),
 (2, 'Alagoas', 'AL', 27, 1, '82'),
@@ -48,9 +48,9 @@ INSERT INTO `geo_estados` (`id`, `nome`, `uf`, `ibge`, `pais_id`, `ddd`) VALUES
 (26, 'São Paulo', 'SP', 35, 1, '11,12,13,14,15,16,17,18,19'),
 (27, 'Tocantins', 'TO', 17, 1, '63'),
 (99, 'Exterior', 'EX', 99, NULL, NULL);
-mysql);
+mysql);*/
 
-        /*\DB::table('estados')->insert(array (
+        DB::table('geo_estados')->insert(array (
             0 =>
             array (
                 'id' => '1',
@@ -240,7 +240,14 @@ mysql);
                 'uf' => 'TO',
                 'pais_id' => '1',
             ),
-        ));*/
+            27 =>
+                array (
+                    'id' => '99',
+                    'nome' => 'EXTERIOR',
+                    'uf' => 'EX',
+                    'pais_id' => null,
+                ),
+        ));
 
 
     }

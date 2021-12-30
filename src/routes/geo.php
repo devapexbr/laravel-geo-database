@@ -55,6 +55,8 @@ Route::get('estados', function(){
 
 Route::post('estados/select2/{pais_id?}', function(Request $request, $pais_id = null){
 
+    $pais_id = $request->pais_id ?? $pais_id;
+
     $itens = GeoEstado::orderBy("nome");
 
     if($pais_id){
@@ -93,10 +95,18 @@ Route::get('cidades', function(){
 
 Route::post('cidades/select2/{estado_id?}', function(Request $request, $estado_id = null){
 
-    $itens = GeoCidade::orderBy("nome");
+    $estado_id = $request->estado_id ?? $estado_id;
+
+    $itens = GeoCidade::orderBy("nome")->with('estado');
 
     if($estado_id){
         $itens = $itens->where('estado_id', $estado_id);
+    }
+
+    if($request->estado_uf){
+        $itens = $itens->whereHas('estado', function ($q) use($request){
+            $q->where('uf', $request->estado_uf);
+        });
     }
 
     if($request->search){
@@ -121,7 +131,7 @@ Route::get('cidades/{id}', function($id){
 })->name('cidades.view');
 
 // alias to estados/cidades
-Route::get('cidades/estado/{id}', function($id){
+Route::get( 'cidades/estado/{id}', function($id){
     return GeoCidade::where('estado_id', $id)->get();
 })->name('cidades.estado');
 
